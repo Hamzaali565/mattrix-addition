@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .hidden{
+        visibility: hidden;
+    }
+</style>
+</head>
+<body>
+    <h1>Matrix Addition App</h1>
+    <form onsubmit="func(); return false">
+    <input type="number" name="" id="input1" required min="2">
+    X
+    <input type="number" name="" id="input2" required min="2">
+    <button type="submit">Start</button>
+    <div id="message"></div>
+    </form>
+    <br>
+    <br>
+    <form style="display: flex; justify-content: space-between;" onsubmit="func2(); return false" class="hidden" id="matrixInputForm">
+    <div id="mInput1" class="mInput"></div>
+    <span style="margin-top: 30px;">+</span>
+    <div id="mInput2" class="mInput"></div>
+    <button style="">Sum</button>
+<div id="mResult" class="mInput"></div>    
+</form>
+<script>
+    let input1 = "";
+    let input2 = "";
+
+    function func(){    
+        let message = document.querySelector('#message')
+        let mInput1 = document.querySelector('#mInput1')
+        let mInput2 = document.querySelector('#mInput2')
+        let mResult = document.querySelector('#mResult')
+
+mInput1.innerHTML = "";
+mInput2.innerHTML = "";
+mResult.innerHTML = "";
+
+input1 = +document.querySelector('#input1').value;
+input2 = +document.querySelector('#input2').value;
+
+if (input1 !== input2) {
+alert("Please enter the same number for both inputs");
+return;
+}
+if (isNaN(input1) || isNaN(input2)) {
+alert("Please enter a number");
+return;
+}
+if (input1 < 2 || input2 < 2) {
+alert("Please enter a number greater than 1");
+return;
+}
+
+for(let i=0; i<input1; i++){
+    for(let j=0; j<input2; j++){
+    mInput1.innerHTML +=
+        `<input required type="number" min="0" max="100" id="m1-${i}-${j}" value="0">`;
+    mInput2.innerHTML +=    
+        `<input required type="number" min="0" max="100" id="m2-${i}-${j}" value="0">`;
+        mResult.innerHTML +=    
+        `<input required type="number" min="0" max="100" id="mResult-${i}-${j}" value="0">`;
+    }
+mInput1.innerHTML += `<br>`;
+mInput2.innerHTML += `<br>`;
+mResult.innerHTML += `<br>`;
+}
+document.querySelector('#matrixInputForm').classList.remove("hidden");
+}
+function func2(){
+for(let i=0; i<input1; i++){
+    for(let j=0; j<input2; j++){
+document.querySelector(`#mResult-${i}-${j}`).value =
++document.querySelector(`#m1-${i}-${j}`).value 
++
++document.querySelector(`#m2-${i}-${j}`).value;
+
+}
+}
+
+
+
+
+
+
+
+}
+
+
+
+
+</script>
+</body>
+</html>
